@@ -9,13 +9,12 @@
     </head>
     <body>
         <div>
-            <div class="header"></div>
+            {% include "layout/partials/header.html" %}
+            {% include "layout/partials/top-menu.html" %}
             <div class="content">
                 {% block content %} strona główna{% endblock %}
             </div>
-            <div class="footer">
-                <div class="author">&copy; Owad</div>
-            </div>
+            {% include "layout/partials/footer.html" %}
         </div>
     </body>
 </html>
