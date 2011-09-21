@@ -1,0 +1,19 @@
+{% if page_obj %}
+<tfoot>
+    <tr>
+        <td>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">poprzednia</a>
+        {% endif %}
+    
+        <span class="current">
+            strona {{ page_obj.number }} z {{ paginator.num_pages }}
+        </span>
+    
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">następna</a>
+        {% endif %}
+        </td>
+    </tr>
+</tfoot>
+{% endif %}

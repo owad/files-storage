@@ -1,0 +1,25 @@
+{% extends 'layout/main.html' %}
+{% block title %} cases {% endblock %} 
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Content type</td>
+                <td>Created</td>
+                <td><a href="{% url case_form %}">nowa sprawa</a></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for file in object_list %}
+            <tr>
+                <td>{{ file.title }}</td>
+                <td>{{ file.content_type }}</td>
+                <td>{{ file.date_add }}</td>
+                <td><a href="#">edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {% include "generic/pagination.html" with page_obj=page_obj %}
+    </table>
+{% endblock %}

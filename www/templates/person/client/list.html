@@ -1,0 +1,25 @@
+{% extends 'layout/main.html' %}
+{% block title %} {{ block.super }} | clients list {% endblock %}
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Content type</td>
+                <td>Created</td>
+                <td><a href="{% url person_client_form %}">nowy klient</a></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for file in object_list %}
+            <tr>
+                <td>{{ file.title }}</td>
+                <td>{{ file.content_type }}</td>
+                <td>{{ file.date_add }}</td>
+                <td><a href="{% url person_client_form %}">edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {% include "generic/pagination.html" with page_obj=page_obj %}
+    </table>
+{% endblock %}
