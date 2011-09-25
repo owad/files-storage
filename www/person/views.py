@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView, CreateView, \
                                     UpdateView, DeleteView
 from person.models import Client
@@ -10,6 +10,10 @@ from person.forms import ClientForm
 class ClientListView(ListView):
     template_name = 'person/client/list.html'
     model = Client
+
+class CilentDetailsView(DetailView):
+    template_name = 'person/client/details.html'
+    queryset = Client.objects.all()
 
 class ClientAddView(CreateView):
     template_name = 'person/client/form.html'
