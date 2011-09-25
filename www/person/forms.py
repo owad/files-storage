@@ -9,3 +9,5 @@ class AgentForm(ModelForm):
 class ClientForm(ModelForm):
     class Meta:
         model = Client
+        fields = {'title', 'first_name', 'last_name', 'company_name', 'email', 
+                  'address_line_1', 'address_line_2', 'city', 'postcode'}

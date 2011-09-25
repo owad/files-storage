@@ -1,4 +1,16 @@
 {% extends 'layout/main.html' %}
 {% block content %}
-{{ form }}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+        <tfoot>
+            <tr>
+                <td>
+                    <input type="submit" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
 {% endblock %}

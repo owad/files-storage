@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 from django.views.generic import ListView as GenericListView, \
     FormView as GenericFormView
 from person.models import Client, Agent
@@ -11,12 +13,16 @@ class ClientListView(GenericListView):
 class ClientFormView(GenericFormView):
     template_name = 'person/client/form.html'
     form_class = ClientForm
-    success_url = 'person_client_form'
     
-    def get_initial(self):
-        self.initial = GenericFormView.get_initial(self)
-        self.initial['agent'] = Agent.objects.get(user=self.request.user)
-        return self.initial
+#    def get_initial(self):
+#        self.initial = GenericFormView.get_initial(self)
+#        return self.initial
+    
+    def form_valid(self, form):
+        new_client = form.save(commit=False)
+        new_client.agent_id = self.request.user.id
+        new_client.save()
+        return HttpResponseRedirect(reverse('person_client_list'))
     
 class AgentFormView(GenericFormView):
     template_name = 'person/agent/form.html'
