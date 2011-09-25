@@ -1,12 +1,13 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView, CreateView, \
                                     UpdateView, DeleteView
 
 from case.models import Case
 from case.forms import CaseForm
-from person.models import Agent
+from person.models import Client
 
 class CaseDetailsView(DetailView):
     template_name = 'case/details.html'
@@ -19,6 +20,16 @@ class CaseListView(ListView):
 class CaseAddView(CreateView):
     template_name = 'case/form.html'
     form_class = CaseForm
+    
+    def get_context_data(self, **kwargs):
+        context = CreateView.get_context_data(self, **kwargs)
+        context['client'] = get_object_or_404(Client, pk=self.kwargs['client_id'])
+        return context
+    
+    def get_initial(self):
+        initial = CreateView.get_initial(self)
+        initial['client'] = self.get_context_data()['client']
+        return initial
     
     def form_valid(self, form):
         form.save()

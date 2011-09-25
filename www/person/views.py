@@ -31,11 +31,11 @@ class ClientAddView(CreateView):
 class ClientEditView(UpdateView):
     template_name = 'person/client/form.html'
     queryset = Client.objects.all()
-    success_url = 'person_client_list'
+    success_url = 'person_client_details'
     form_class = ClientForm
     
     def get_success_url(self):
-        return reverse(self.success_url)
+        return reverse(self.success_url, kwargs={'pk': self.get_object().id})
 
     
 class ClientDelView(DeleteView):

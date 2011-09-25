@@ -5,3 +5,4 @@ from case.models import Case
 class CaseForm(ModelForm):
     class Meta:
         model = Case
+        widgets = {'client': HiddenInput()}

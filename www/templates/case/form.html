@@ -1,6 +1,17 @@
 {% extends 'layout/main.html' %}
 {% block title %}new case{% endblock %}
 {% block content %}
+
+{% include 'person/client/client_data.html' with client=client %}
+
+<h3>
+{% if object %}
+Edycja danych sprawy "{{ object }}"
+{% else %}
+Nowa sprawa
+{% endif %}
+</h3>
+
 <form method="post" action="">
     {% csrf_token %}
     <table>

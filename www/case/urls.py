@@ -5,7 +5,7 @@ from case.views import CaseListView, CaseDetailsView, CaseAddView, \
 urlpatterns = patterns('case.views',
     url(r'^details/(?P<pk>\d+)/$', CaseDetailsView.as_view(), name='case_details'),
     url(r'^list$', CaseListView.as_view(), name='case_list'),
-    url(r'^form/$', CaseAddView.as_view(), name='case_add'),
-    url(r'^form/(?P<pk>\d+)/$', CaseEditView.as_view(), name='case_edit'),
+    url(r'^add/(?P<client_id>\d*)$', CaseAddView.as_view(), name='case_add'),
+    url(r'^edit/(?P<pk>\d+)/$', CaseEditView.as_view(), name='case_edit'),
     url(r'^delete/(?P<pk>\d+)/$', CaseDelView.as_view(), name='case_del')
 )
