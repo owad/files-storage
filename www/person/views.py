@@ -1,31 +1,44 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from django.views.generic import ListView as GenericListView, \
-    FormView as GenericFormView
-from person.models import Client, Agent
-from person.forms import AgentForm, ClientForm
+from django.views.generic import ListView
+from django.views.generic.edit import FormView, CreateView, \
+                                    UpdateView, DeleteView
+from person.models import Client
+from person.forms import ClientForm
  
 
-class ClientListView(GenericListView):
+class ClientListView(ListView):
     template_name = 'person/client/list.html'
     model = Client
 
-class ClientFormView(GenericFormView):
+class ClientAddView(CreateView):
     template_name = 'person/client/form.html'
     form_class = ClientForm
     
-#    def get_initial(self):
-#        self.initial = GenericFormView.get_initial(self)
-#        return self.initial
+    def get_initial(self):
+        self.initial['agent'] = self.request.user.id
+        return self.initial
     
     def form_valid(self, form):
-        new_client = form.save(commit=False)
-        new_client.agent_id = self.request.user.id
-        new_client.save()
+        form.save()
         return HttpResponseRedirect(reverse('person_client_list'))
     
-class AgentFormView(GenericFormView):
-    template_name = 'person/agent/form.html'
-    form_class = AgentForm
-    success_url = 'person_agent_form'
-    initial = {}
+    
+class ClientEditView(UpdateView):
+    template_name = 'person/client/form.html'
+    queryset = Client.objects.all()
+    success_url = 'person_client_list'
+    form_class = ClientForm
+    
+    def get_success_url(self):
+        return reverse(self.success_url)
+
+    
+class ClientDelView(DeleteView):
+    template_name = 'person/client/delete.html'
+    model = Client
+    success_url = 'person_client_list'
+    
+    def post(self, *args, **kwargs):
+        self.delete(*args, **kwargs)
+        return HttpResponseRedirect(reverse(self.success_url))

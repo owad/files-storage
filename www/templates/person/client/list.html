@@ -5,14 +5,17 @@
         <thead>
             <tr>
                 <td>Title</td>
-                <td><a href="{% url person_client_form %}">nowy klient</a></td>
+                <td><a href="{% url person_client_add %}">nowy klient</a></td>
             </tr>
         </thead>
         <tbody>
         {% for client in object_list %}
             <tr>
                 <td>{{ client }}</td>
-                <td><a href="{% url person_client_form %}">edit</a></td>
+                <td>
+                    <a href="{% url person_client_edit client.id %}">edit</a>
+                    <a href="{% url person_client_del client.id %}">delete</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

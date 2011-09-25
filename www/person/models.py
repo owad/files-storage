@@ -39,7 +39,7 @@ class Client(AbstractPerson):
     '''
     client object
     '''
-    agent = models.ForeignKey(Agent)
+    agent = models.ForeignKey(Agent, blank=False)
     
     def __unicode__(self):
         if self.company_name:

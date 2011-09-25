@@ -13,7 +13,7 @@
         <tbody>
         {% for case in object_list %}
             <tr>
-                <td>{{ case.title }}</td>
+                <td><a href="{% url case_details case.id %}">{{ case.title }}</a></td>
                 <td>{{ case.client }} </td>
                 <td>{{ case.date_add }}</td>
                 <td>

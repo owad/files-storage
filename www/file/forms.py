@@ -5,8 +5,5 @@ from file.models import File
 class FileForm(ModelForm):
     class Meta:
         model = File
-        fields = ('id', 'title', 'file')
-        widgets = {
-           'id': HiddenInput(),
-           'content_type': HiddenInput()
-        }
+        fields = ('id', 'title', 'file', 'case')
+        widgets = {'case': HiddenInput()}
