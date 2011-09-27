@@ -2,7 +2,7 @@
 {% block title %}new case{% endblock %}
 {% block content %}
 
-{% include 'person/client/client_data.html' with client=client %}
+{% include 'person/client/client_data.html' with client=object.client %}
 
 <h3>
 {% if object %}

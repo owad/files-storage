@@ -38,10 +38,10 @@ class CaseAddView(CreateView):
 class CaseEditView(UpdateView):
     template_name = 'case/form.html'
     queryset = Case.objects.all()
-    success_url = 'case_list'
+    success_url = 'case_details'
     
     def get_success_url(self):
-        return reverse(self.success_url)
+        return reverse(self.success_url, kwargs={'pk': self.get_object().id})
     
 class CaseDelView(DeleteView):
     template_name = 'case/delete.html'

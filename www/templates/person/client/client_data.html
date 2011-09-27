@@ -1,7 +1,7 @@
 <h3>Dane klienta</h3>
 <table>
     <tr>
-        <td>{{ client }}</td>
+        <td><a href="{% url person_client_details client.id %}">{{ client }}</a></td>
         <td><a href="{% url person_client_edit client.id %}">edytuj</a></td>
     </tr>
 </table>

@@ -1,14 +1,18 @@
 from django.views.generic import View, TemplateView, ListView, \
     FormView as GenericFormView, ListView as GenericListView 
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView, CreateView, \
                                     UpdateView, DeleteView
+
+from PIL import Image
+
 from file.forms import FileForm
 from file.models import File
 from case.models import Case
+
 
 class FileDetailsView(DetailView):
     template_name = 'file/details.html'
@@ -49,5 +53,14 @@ class FileDelView(DeleteView):
         case = self.get_object().case
         self.delete(*args, **kwargs)
         return HttpResponseRedirect(reverse(self.success_url, kwargs={'pk': case.id }))
+    
+class FileServeView(TemplateView):
+    
+    def render_to_response(self, context, **response_kwargs):
+        file = get_object_or_404(File, pk=self.kwargs['pk'])
+        if file.case.client.agent.id != self.request.user.id:
+            pass # return default image 
+        image_data = open(str(file.file), "rb").read()
+        return HttpResponse(image_data, mimetype="image/png")
     
     

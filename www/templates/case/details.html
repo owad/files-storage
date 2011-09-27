@@ -11,18 +11,21 @@
             <td>Typ</td>
             <td>Rozmiar</td>
             <td>Data dodania</td>
+            <td></td>
             <td><a href="{% url file_add object.id %}">nowy plik</a></td>
         </tr>
     </thead>
     <tbody>
         {% for file in object.file_set.all %}
         <tr>
-            <td><a href="{% url file_details file.id %}">{{ file }}</a></td>
+            <td>{{ file }}</td>
             <td>{{ file.content_type }}</td>
             <td>{{ file.size }}kB</td>
             <td>{{ file.date_add }}</td>
+            <td><img style="width: 48px;" src="{% url file_serve file.id %}" alt="{{ file.title }}" /></td>
             <td>
                 <a href="{% url file_del file.id %}">delete</a>
+                <a href="{% url file_serve file.id %}">show</a>
             </td>
         </tr>
         {% endfor %}
