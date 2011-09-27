@@ -1,0 +1,31 @@
+{% extends 'layout/main.html' %}
+{% block title %}{{ block.super }} | {{ object }}{% endblock %}
+{% block content %}
+{% include 'person/client/client_data.html' with client=object.client %}
+{% include 'case/case_data.html' with case=object %}
+<h3>Pliki</h3>
+<table>
+    <thead>
+        <tr>
+            <td>Nazwa</td>
+            <td>Typ</td>
+            <td>Rozmiar</td>
+            <td>Data dodania</td>
+            <td><a href="{% url file_add object.id %}">nowy plik</a></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in object.file_set.all %}
+        <tr>
+            <td><a href="{% url file_details file.id %}">{{ file }}</a></td>
+            <td>{{ file.content_type }}</td>
+            <td>{{ file.size }}kB</td>
+            <td>{{ file.date_add }}</td>
+            <td>
+                <a href="{% url file_del file.id %}">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

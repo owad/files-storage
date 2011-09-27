@@ -1,0 +1,13 @@
+{% extends 'layout/main.html' %}
+{% block title %}{{ block.super }} | {{ object }}{% endblock %}
+{% block content %}
+<h3>Dane pliku</h3>
+<table>
+    <tr>
+        <td>
+            {{ object.title }}
+        </td>
+    </tr>
+</table>
+<a href="{% url file_del file.id %}">delete</a>
+{% endblock %}

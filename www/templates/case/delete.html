@@ -1,0 +1,6 @@
+<p>Czy jesteś pewien, że chcesz usunąć sprawę klienta {{ object.client }} "{{ object }}"?</p>
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" />
+<button type="button" onclick='document.location.href="{% url case_list %}"' >Back</button>
+</form>

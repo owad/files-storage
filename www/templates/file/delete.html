@@ -1,0 +1,6 @@
+<p>Czy jesteś pewien, że chcesz usunąć plik "{{ object }}" należący do sprawy "{{ object.case }}"?</p>
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" />
+<button type="button" onclick='document.location.href="{% url case_details object.case.id %}"' >Back</button>
+</form>
