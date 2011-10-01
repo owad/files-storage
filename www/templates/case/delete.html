@@ -2,5 +2,5 @@
 <form action="" method="post">
 {% csrf_token %}
 <input type="submit" />
-<button type="button" onclick='document.location.href="{% url case_list %}"' >Back</button>
+<button type="button" onclick='document.location.href="{% url person_client_details object.client.id %}"' >Back</button>
 </form>

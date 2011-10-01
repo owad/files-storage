@@ -1,24 +1,6 @@
 {% extends 'layout/main.html' %}
 {% block title %}{{ block.super }} | {{ object }}{% endblock %}
 {% block content %}
-
-{% include 'person/client/client_data.html' with client=object %}
-
-<h3>Sprawy klienta</h3>
-<table>
-    <thead>
-        <tr>
-            <td>Nazwa</td>
-            <td><a href="{% url case_add object.id %}">nowa sprawa</a></td>
-        </tr>
-    </thead>
-    <tbody>
-    {% for case in object.case_set.all %}
-        <tr>
-            <td><a href="{% url case_details case.id %}">{{ case }}</a></td>
-            <td></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    {% include 'person/client/client_data.html' with client=object %}
+    {% include 'case/case_list_table.html' with object_list=object.case_set.all page_obj=page_obj %}
 {% endblock %}

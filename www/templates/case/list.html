@@ -1,28 +1,5 @@
 {% extends 'layout/main.html' %}
 {% block title %} cases {% endblock %} 
 {% block content %}
-    <table>
-        <thead>
-            <tr>
-                <td>Title</td>
-                <td>Client</td>
-                <td>Created</td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-        {% for case in object_list %}
-            <tr>
-                <td><a href="{% url case_details case.id %}">{{ case.title }}</a></td>
-                <td>{{ case.client }} </td>
-                <td>{{ case.date_add }}</td>
-                <td>
-                    <a href="{% url case_edit case.id %}">edit</a>
-                    <a href="{% url case_del case.id %}">delete</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        {% include "generic/pagination.html" with page_obj=page_obj %}
-    </table>
+    {% include 'case/case_list_table.html' with object_list=object_list page_obj=page_obj %}
 {% endblock %}

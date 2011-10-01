@@ -12,6 +12,10 @@ from person.models import Client
 class CaseDetailsView(DetailView):
     template_name = 'case/details.html'
     queryset = Case.objects.all()
+    
+    def get_context_data(self, **kwargs):
+        context = DetailView.get_context_data(self, **kwargs)
+        return context
 
 class CaseListView(ListView):
     template_name = 'case/list.html'
