@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-01 19:19+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/case/case_data.html:2
+msgid "dane sprawy"
+msgstr ""
+
+#: templates/case/case_data.html:6 templates/case/case_list_table.html:19
+#: templates/person/client/client_data.html:6
+#: templates/person/client/list.html:18
+msgid "edytuj"
+msgstr ""
+
+#: templates/case/case_list_table.html:2
+msgid "sprawy klienta"
+msgstr ""
+
+#: templates/case/case_list_table.html:6 templates/file/list_table.html:6
+#: templates/person/client/list.html:9
+msgid "tytuł"
+msgstr ""
+
+#: templates/case/case_list_table.html:7
+msgid "klient"
+msgstr ""
+
+#: templates/case/case_list_table.html:8 templates/file/list_table.html:8
+msgid "data utworzenia"
+msgstr ""
+
+#: templates/case/case_list_table.html:9 templates/case/form.html:12
+msgid "nowa sprawa"
+msgstr ""
+
+#: templates/case/delete.html:6 templates/file/delete.html:6
+#: templates/person/client/delete.html:6
+msgid "wróć"
+msgstr ""
+
+#: templates/case/form.html:10
+msgid "edycja danych sprawy"
+msgstr ""
+
+#: templates/file/delete.html:2
+msgid "czy jesteś pewien, że chcesz usunąć plik"
+msgstr ""
+
+#: templates/file/delete.html:2
+msgid "należący do sprawy"
+msgstr ""
+
+#: templates/file/details.html:5
+msgid "dane pliku"
+msgstr ""
+
+#: templates/file/details.html:13 templates/file/list_table.html:19
+#: templates/person/client/list.html:19
+msgid "usuń"
+msgstr ""
+
+#: templates/file/form.html:5
+msgid "nowy plik do sprawy"
+msgstr ""
+
+#: templates/file/list_table.html:2
+msgid "pliki"
+msgstr ""
+
+#: templates/file/list_table.html:7
+msgid "typ pliku"
+msgstr ""
+
+#: templates/file/list_table.html:9
+msgid "nowy plik"
+msgstr ""
+
+#: templates/file/list_table.html:20
+msgid "pokaż"
+msgstr ""
+
+#: templates/generic/pagination.html:7
+msgid "poprzednia"
+msgstr ""
+
+#: templates/generic/pagination.html:15
+msgid "następna"
+msgstr ""
+
+#: templates/layout/main.html:6
+msgid "agent ubezpieczeniowy"
+msgstr ""
+
+#: templates/layout/partials/top-menu.html:3
+msgid "sprawy"
+msgstr ""
+
+#: templates/layout/partials/top-menu.html:4
+msgid "klienci"
+msgstr ""
+
+#: templates/person/client/client_data.html:2
+msgid "dane klienta"
+msgstr ""
+
+#: templates/person/client/delete.html:2
+msgid "czy jesteś pewien, że chesz usunąć klienta"
+msgstr ""
+
+#: templates/person/client/form.html:11
+msgid "zapisz"
+msgstr ""
+
+#: templates/person/client/list.html:5
+msgid "lista klientów"
+msgstr ""
+
+#: templates/person/client/list.html:10
+msgid "nowy klient"
+msgstr ""

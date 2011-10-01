@@ -1,0 +1,26 @@
+{% load i18n %}
+<h3>{% trans 'pliki'|capfirst %}</h3>
+<table>
+    <thead>
+        <tr>
+            <td>{% trans 'tytuł'|capfirst %}</td>
+            <td>{% trans 'typ pliku'|capfirst %}</td>
+            <td>{% trans 'data utworzenia'|capfirst %}</td>
+            <td><a href="{% url file_add object.id %}">{% trans 'nowy plik'|capfirst %}</a></td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for file in object_list %}
+        <tr>
+            <td>{{ file.title }}</td>
+            <td>{{ file.content_type }}</td>
+            <td>{{ file.date_add }}</td>
+            <td>
+                <a href="{% url file_del file.id %}">{% trans 'usuń' %}</a>
+                <a href="{% url file_serve file.id %}">{% trans 'pokaż' %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    {% include "generic/pagination.html" with page_obj=page_obj %}
+</table>

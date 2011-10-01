@@ -1,0 +1,25 @@
+{% load i18n %}
+<h3>{% trans 'sprawy klienta'|capfirst %}</h3>
+<table>
+    <thead>
+        <tr>
+            <td>{% trans 'tytuł'|capfirst %}</td>
+            <td>{% trans 'klient'|capfirst %}</td>
+            <td>{% trans 'data utworzenia'|capfirst %}</td>
+            <td><a href="{% url case_add object.client.id %}">{% trans 'nowa sprawa'|capfirst %}</a></td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for case in object_list %}
+        <tr>
+            <td><a href="{% url case_details case.id %}">{{ case }}</a></td>
+            <td>{{ case.client }}</td>
+            <td>{{ case.date_add }}</td>
+            <td>
+                <a href="{% url case_edit case.id %}">{% trans 'edytuj' %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    {% include "generic/pagination.html" with page_obj=page_obj %}
+</table>
