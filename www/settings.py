@@ -1,4 +1,5 @@
 # Django settings for www project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -6,6 +7,8 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 MANAGERS = ADMINS
 
@@ -69,6 +72,8 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    SITE_ROOT + '/static/',
+    SITE_ROOT + '/static/tiny_mce/langs/'
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -103,11 +108,16 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'www.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    '/home/owad/workspace/insurance/www/templates', 
-    '/home/owad/workspace-prv/files-storage/www/templates',
+    SITE_ROOT + '/templates',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
 )
 
 INSTALLED_APPS = (

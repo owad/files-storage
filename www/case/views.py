@@ -20,6 +20,7 @@ class CaseListView(ListView):
 class CaseAddView(CreateView):
     template_name = 'case/form.html'
     form_class = CaseForm
+    success_url = 'case_list'
     
     def get_context_data(self, **kwargs):
         context = CreateView.get_context_data(self, **kwargs)
@@ -33,12 +34,13 @@ class CaseAddView(CreateView):
     
     def form_valid(self, form):
         form.save()
-        return HttpResponseRedirect(reverse('case_list'))
+        return HttpResponseRedirect(reverse(self.success_url))
     
 class CaseEditView(UpdateView):
     template_name = 'case/form.html'
     queryset = Case.objects.all()
     success_url = 'case_details'
+    form_class = CaseForm
     
     def get_success_url(self):
         return reverse(self.success_url, kwargs={'pk': self.get_object().id})
