@@ -1,5 +1,6 @@
 # Django settings for www project.
 import os
+from django.utils.translation import ugettext as _
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

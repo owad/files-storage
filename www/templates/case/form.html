@@ -1,4 +1,5 @@
 {% extends 'layout/main.html' %}
+{% load i18n %}
 {% block title %}new case{% endblock %}
 {% block content %}
 
@@ -6,9 +7,9 @@
 
 <h3>
 {% if object %}
-Edycja danych sprawy "{{ object }}"
+    {% trans 'edycja danych sprawy'|capfirst %} "{{ object }}"
 {% else %}
-Nowa sprawa
+    {% trans 'nowa sprawa'|capfirst %}
 {% endif %}
 </h3>
 

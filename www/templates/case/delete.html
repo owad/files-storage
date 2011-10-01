@@ -1,6 +1,7 @@
-<p>Czy jesteś pewien, że chcesz usunąć sprawę klienta {{ object.client }} "{{ object }}"?</p>
+{% load i18n %}
+<p>{% trans 'czy jesteś pewien, że chcesz usunąć sprawę klienta'|capfirst {{ object.client }} "<b>{{ object }}</b>"?</p>
 <form action="" method="post">
 {% csrf_token %}
 <input type="submit" />
-<button type="button" onclick='document.location.href="{% url person_client_details object.client.id %}"' >Back</button>
+<button type="button" onclick='document.location.href="{% url person_client_details object.client.id %}"' >{% trans 'wróć' %}</button>
 </form>

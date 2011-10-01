@@ -1,4 +1,5 @@
 {% extends 'layout/main.html' %}
+{% load i18n %}
 {% block title %}files list{% endblock %}
 {% block content %}
     {% include 'file/list_table.html' with object_list=object_list page_obj=page_obj %}

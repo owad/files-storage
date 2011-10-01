@@ -1,7 +1,8 @@
-<h3>Dane klienta</h3>
+{% load i18n %}
+<h3>{% trans 'dane klienta'|capfirst %}</h3>
 <table>
     <tr>
         <td><a href="{% url person_client_details client.id %}">{{ client }}</a></td>
-        <td><a href="{% url person_client_edit client.id %}">edytuj</a></td>
+        <td><a href="{% url person_client_edit client.id %}">{% trans 'edytuj'|capfirst %}</a></td>
     </tr>
 </table>

@@ -1,7 +1,8 @@
 {% extends 'layout/main.html' %}
+{% load i18n %}
 {% block title %}{{ block.super }} | {{ object }}{% endblock %}
 {% block content %}
-<h3>Dane pliku</h3>
+<h3>{% trans 'dane pliku'|capfirst %}</h3>
 <table>
     <tr>
         <td>
@@ -9,5 +10,5 @@
         </td>
     </tr>
 </table>
-<a href="{% url file_del file.id %}">delete</a>
+<a href="{% url file_del file.id %}">{% trans 'usuń' %}</a>
 {% endblock %}

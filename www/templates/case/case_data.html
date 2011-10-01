@@ -1,7 +1,8 @@
-<h3>Dane sprawy</h3>
+{% load i18n %}
+<h3>{% trans 'dane sprawy'|capfirst %}</h3>
 <table>
     <tr>
         <td>{{ case }}</td>
-        <td><a href="{% url case_edit case.id %}">edytuj</a></td>
+        <td><a href="{% url case_edit case.id %}">{% trans 'edytuj' %}</a></td>
     </tr>
 </table>
