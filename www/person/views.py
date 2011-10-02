@@ -1,10 +1,11 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormView, CreateView, \
                                     UpdateView, DeleteView
-from person.models import Client
-from person.forms import ClientForm
+from person.models import Client, Agent
+from person.forms import ClientForm, AgentForm
+from django.shortcuts import get_object_or_404
  
 
 class ClientListView(ListView):
@@ -46,3 +47,24 @@ class ClientDelView(DeleteView):
     def post(self, *args, **kwargs):
         self.delete(*args, **kwargs)
         return HttpResponseRedirect(reverse(self.success_url))
+    
+class AgentDetailsView(TemplateView):
+    template_name = 'person/agent/details.html'
+    
+    def get_context_data(self, **kwargs):
+        context = TemplateView.get_context_data(self, **kwargs)
+        context['agent'] = Agent.objects.get(user=self.request.user)
+        return context
+    
+class AgentEditView(UpdateView):
+    template_name = 'person/agent/form.html'
+    queryset = Agent.objects.all()
+    success_url = 'person_agent_details'
+    form_class = AgentForm
+    
+    def get_object(self, queryset=None):
+        return Agent.objects.get(user=self.request.user)
+    
+    def get_success_url(self):
+        return reverse(self.success_url)
+    

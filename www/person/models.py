@@ -1,17 +1,20 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-    
+from django.core.validators import RegexValidator
+from django.utils.translation import gettext as _
+
 class AbstractPerson(models.Model):
     title = models.CharField(max_length=64, blank=True)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     company_name = models.CharField(max_length=128, blank=True)
-    email = models.EmailField(blank=True)
+    email = models.EmailField()
     address_line_1 = models.CharField(max_length=64, blank=True)
     address_line_2 = models.CharField(max_length=64, blank=True)
     city = models.CharField(max_length=64, blank=True)
-    postcode = models.CharField(max_length=6, blank=True)
+    postcode = models.CharField(max_length=6, blank=True, validators=[RegexValidator(r'^\d{2}-\d{3}$', _('Błędny format'))])
     date_add = models.DateTimeField(auto_now_add=True)
 
 class Agent(AbstractPerson):
@@ -32,10 +35,7 @@ class Agent(AbstractPerson):
             return " ".join(filter(None, [self.title, 
                                           self.first_name, 
                                           self.last_name]))
-
-    def find_by_user(self, User):
-        self.objects.get(user=User)
-        
+    
 class Client(AbstractPerson):
     '''
     client object
@@ -50,3 +50,4 @@ class Client(AbstractPerson):
     
     def is_company(self):
         return bool(self.company_name)
+    

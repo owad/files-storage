@@ -1,5 +1,16 @@
 {% extends 'layout/main.html' %}
 {% load i18n %}
 {% block content %}
-{{ form }}
+    <form action="" method="post">
+    {% csrf_token %}
+        <table>
+            {{ form }}
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="{% trans 'zapisz' %}" /></td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
 {% endblock %}

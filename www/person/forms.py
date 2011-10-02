@@ -5,6 +5,7 @@ from person.models import Agent, Client
 class AgentForm(ModelForm):
     class Meta:
         model = Agent
+        exclude = {'user'}
 
 class ClientForm(ModelForm):
     class Meta:
