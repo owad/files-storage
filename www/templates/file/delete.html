@@ -1,5 +1,5 @@
 {% load i18n %}
-<p>{% trans 'czy jesteś pewien, że chcesz usunąć plik'capfirst %} "{{ object }}" {% trans 'należący do sprawy'|capfirst %} "{{ object.case }}"?</p>
+<p>{% trans 'czy jesteś pewien, że chcesz usunąć plik'|capfirst %} "{{ object }}" {% trans 'należący do sprawy' %} "{{ object.case }}"?</p>
 <form action="" method="post">
 {% csrf_token %}
 <input type="submit" />

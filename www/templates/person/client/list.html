@@ -2,25 +2,5 @@
 {% load i18n %} 
 {% block title %} {{ block.super }} | clients list {% endblock %}
 {% block content %}
-    <h3>{% trans 'lista klientów'|capfirst %}</h3>
-    <table>
-        <thead>
-            <tr>
-                <td>{% trans 'tytuł'|capfirst %}</td>
-                <td><a href="{% url person_client_add %}">{% trans 'nowy klient' %}</a></td>
-            </tr>
-        </thead>
-        <tbody>
-        {% for client in object_list %}
-            <tr>
-                <td><a href="{% url person_client_details client.id %}">{{ client }}</a></td>
-                <td>
-                    <a href="{% url person_client_edit client.id %}">{% trans 'edytuj' %}</a>
-                    <a href="{% url person_client_del client.id %}">{% trans 'usuń' %}</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        {% include "generic/pagination.html" with page_obj=page_obj %}
-    </table>
+    {% include 'person/client/list_table.html' with object_list=object_list page_obj=page_obj %}
 {% endblock %}

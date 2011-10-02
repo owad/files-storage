@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 from person.models import Agent, Client
 
 class Case(models.Model):

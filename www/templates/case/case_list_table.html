@@ -17,6 +17,7 @@
             <td>{{ case.date_add }}</td>
             <td>
                 <a href="{% url case_edit case.id %}">{% trans 'edytuj' %}</a>
+                <a href="{% url mail_compose case.id %}">{% trans 'wyślij' %}</a>
             </td>
         </tr>
     {% endfor %}
