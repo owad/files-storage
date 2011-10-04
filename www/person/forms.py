@@ -1,13 +1,13 @@
 from django.forms import ModelForm
 from django.forms.widgets import HiddenInput
-from person.models import Agent, Client
+from person.models import Employee, Client
 
-class AgentForm(ModelForm):
+class EmployeeForm(ModelForm):
     class Meta:
-        model = Agent
+        model = Employee
         exclude = {'user'}
 
 class ClientForm(ModelForm):
     class Meta:
         model = Client
-        widgets = {'agent': HiddenInput()}
+        widgets = {'employee': HiddenInput()}

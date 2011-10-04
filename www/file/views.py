@@ -58,7 +58,7 @@ class FileServeView(TemplateView):
     
     def render_to_response(self, context, **response_kwargs):
         file = get_object_or_404(File, pk=self.kwargs['pk'])
-        if file.case.client.agent.id != self.request.user.id:
+        if file.case.client.employee.id != self.request.user.id:
             pass # return default image 
         image_data = open(str(file.file), "rb").read()
         return HttpResponse(image_data, mimetype="image/png")

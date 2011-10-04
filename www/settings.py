@@ -170,4 +170,4 @@ FILE_UPLOAD_HANDLERS = (
 
 ALLOWED_ARCHIVES = ('application/x-rar', 'application/zip')
 
-AUTH_PROFILE_MODULE = 'person.Agent'
+AUTH_PROFILE_MODULE = 'person.Employee'

@@ -3,8 +3,8 @@ from django.core.urlresolvers import reverse
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormView, CreateView, \
                                     UpdateView, DeleteView
-from person.models import Client, Agent
-from person.forms import ClientForm, AgentForm
+from person.models import Client, Employee
+from person.forms import ClientForm, EmployeeForm
 from django.shortcuts import get_object_or_404
  
 
@@ -21,7 +21,7 @@ class ClientAddView(CreateView):
     form_class = ClientForm
     
     def get_initial(self):
-        self.initial['agent'] = self.request.user.id
+        self.initial['employee'] = self.request.user.id
         return self.initial
     
     def form_valid(self, form):
@@ -48,22 +48,22 @@ class ClientDelView(DeleteView):
         self.delete(*args, **kwargs)
         return HttpResponseRedirect(reverse(self.success_url))
     
-class AgentDetailsView(TemplateView):
-    template_name = 'person/agent/details.html'
+class EmployeeDetailsView(TemplateView):
+    template_name = 'person/employee/details.html'
     
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        context['agent'] = Agent.objects.get(user=self.request.user)
+        context['employee'] = Employee.objects.get(user=self.request.user)
         return context
     
-class AgentEditView(UpdateView):
-    template_name = 'person/agent/form.html'
-    queryset = Agent.objects.all()
-    success_url = 'person_agent_details'
-    form_class = AgentForm
+class EmployeeEditView(UpdateView):
+    template_name = 'person/employee/form.html'
+    queryset = Employee.objects.all()
+    success_url = 'person_employee_details'
+    form_class = EmployeeForm
     
     def get_object(self, queryset=None):
-        return Agent.objects.get(user=self.request.user)
+        return Employee.objects.get(user=self.request.user)
     
     def get_success_url(self):
         return reverse(self.success_url)

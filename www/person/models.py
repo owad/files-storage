@@ -18,9 +18,9 @@ class AbstractPerson(models.Model):
                                 validators=[RegexValidator(r'^\d{2}-\d{3}$', _('Błędny format'))])
     date_add = models.DateTimeField(auto_now_add=True, verbose_name=_('data utworzenia'))
 
-class Agent(AbstractPerson):
+class Employee(AbstractPerson):
     '''
-    agent object
+    employee object
     '''
     user = models.ForeignKey(User, unique=True, verbose_name=_('użytkownik'))
     
@@ -36,12 +36,12 @@ class Agent(AbstractPerson):
             return " ".join(filter(None, [self.title, 
                                           self.first_name, 
                                           self.last_name]))
-    
+
 class Client(AbstractPerson):
     '''
     client object
     '''
-    agent = models.ForeignKey(Agent, blank=False, verbose_name=_('agent'))
+    employee = models.ForeignKey(Employee, blank=False, verbose_name=_('pracownik'))
     
     def __unicode__(self):
         if self.company_name:

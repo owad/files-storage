@@ -1,5 +1,5 @@
 from django.db import models
-from person.models import Agent, Client
+from person.models import Client
 
 class Case(models.Model):
     client = models.ForeignKey(Client, blank=False)

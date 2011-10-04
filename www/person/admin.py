@@ -1,5 +1,5 @@
 from django.contrib import admin
-from person.models import Client, Agent
+from person.models import Client, Employee
 
 class ClientAdmin(admin.ModelAdmin):
     model = Client
@@ -11,8 +11,8 @@ class ClientAdmin(admin.ModelAdmin):
     
 #    actions_on_bottom = True
 
-class AgentAdmin(admin.ModelAdmin):
-    model = Agent
+class EmployeeAdmin(admin.ModelAdmin):
+    model = Employee
 
 admin.site.register(Client, ClientAdmin)
-admin.site.register(Agent, AgentAdmin)
+admin.site.register(Employee, EmployeeAdmin)
